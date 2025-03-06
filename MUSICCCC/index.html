@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Music Player
+  </title>
+  <link href="styles.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+  <link href="lmao2.css" rel="stylesheet"/>
+  <style>
+   .menu {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .menu a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            color: yellow;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="left-section">
+    <div class="album-cover">
+     <img alt="Album Cover" id="album-cover" src="default-cover.jpg"/>
+    </div>
+   </div>
+   <div class="middle-section">
+    <div class="controls">
+     <button id="shuffle">
+      <i class="fas fa-random">
+      </i>
+     </button>
+     <button id="prev">
+      <i class="fas fa-backward">
+      </i>
+     </button>
+     <button id="play-pause">
+      <i class="fas fa-play">
+      </i>
+     </button>
+     <button id="next">
+      <i class="fas fa-forward">
+      </i>
+     </button>
+     <button id="repeat">
+      <i class="fas fa-redo">
+      </i>
+     </button>
+    </div>
+    <div class="progress-container">
+     <div class="progress-bar">
+     </div>
+     <span id="current-time">
+      0:00
+     </span>
+     <span id="total-time">
+      0:00
+     </span>
+    </div>
+    <div class="volume-control">
+     <button id="volume-btn">
+      <i aria-hidden="true" class="fas fa-volume-up">
+      </i>
+     </button>
+     <input id="volume-slider" max="1" min="0" step="0.01" type="range" value="1"/>
+    </div>
+   </div>
+   <div class="right-section">
+    <h3 style="font-size: 40px;">
+     Playlist
+    </h3>
+    <div class="playlist">
+     <ul id="playlist">
+      <li data-cover="cover/hero.jpg" data-src="music/hero.mp3">
+       <img alt="Hero - Mili" src="cover/hero.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Hero (Limbus Company OST)
+        </span>
+        <span class="song-artist">
+         Mili
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/evan.jpg" data-src="music/evan.mp3">
+       <img alt="KOMM, SUSSER TOD" src="cover/evan.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         KOMM, SUSSER TOD M-10 Director's Edit Version | Evangelion Finally
+        </span>
+        <span class="song-artist">
+         ARIANNE
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/Aoharu.jpg" data-src="music/Aoharu.mp3">
+       <img alt="Song 3" src="cover/Aoharu.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         [Blue Archive Fanmade] Hello to Aoharu Remix
+        </span>
+        <span class="song-artist">
+         fnylspふにゃスペ
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/Lobster.jpg" data-src="music/Lobster.mp3">
+       <img alt="Song4" src="cover/Lobster.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Lobster
+        </span>
+        <span class="song-artist">
+         RJ Pasin
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/Persona.jpg" data-src="music/Itsgoing.mp3">
+       <img alt="Song5" src="cover/Persona.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         It's Going Down Now
+        </span>
+        <span class="song-artist">
+         Azumi Takahashi
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/goneangel.jpg" data-src="music/goneangel.mp3">
+       <img alt="Song6" src="cover/goneangel.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Gone Angel
+        </span>
+        <span class="song-artist">
+         Mili
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/goneangel.jpg" data-src="music/Ironlotus.mp3">
+       <img alt="Song7" src="cover/goneangel.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Iron Lotus
+        </span>
+        <span class="song-artist">
+         Mili
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/Bury the Light.jpg" data-src="music/Bury the Light.mp3">
+       <img alt="Bury the Light" src="cover/Bury the Light.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Bury the Light
+        </span>
+        <span class="song-artist">
+         Casey Edwards
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/Chamber Of Reflection.jpg" data-src="music/Chamber Of Reflection.mp3">
+       <img alt="Chamber Of Reflection" src="cover/Chamber Of Reflection.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Chamber Of Reflection
+        </span>
+        <span class="song-artist">
+         Mac DeMarco
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/chess.jpg" data-src="music/chess.mp3">
+       <img alt="chess" src="cover/chess.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         chess
+        </span>
+        <span class="song-artist">
+         Joyful
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/You wanted this.jpg" data-src="music/You wanted this.mp3">
+       <img alt="You wanted this" src="cover/You wanted this.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         You wanted this
+        </span>
+        <span class="song-artist">
+         Just a friendly Crusader
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/Just The Two Of Us.jpg" data-src="music/Just The Two Of Us.mp3">
+       <img alt="Just The Two Of Us" src="cover/Just The Two Of Us.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Just The Two Of Us
+        </span>
+        <span class="song-artist">
+         KILTLE
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/Rivers In the Desert.jpg" data-src="music/Rivers In the Desert.mp3">
+       <img alt="Rivers In the Desert" src="cover/Rivers In the Desert.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Rivers In the Desert
+        </span>
+        <span class="song-artist">
+         Lyn - Topic
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/Life Will Change.jpg" data-src="music/Life Will Change.mp3">
+       <img alt="Life Will Change" src="cover/Life Will Change.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Life Will Change
+        </span>
+        <span class="song-artist">
+         Lyn - Topic
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/ブルーアーカイブ Blue Archive OST 113. Usagi Flap.jpg" data-src="music/ブルーアーカイブ Blue Archive OST 113. Usagi Flap.mp3">
+       <img alt="ブルーアーカイブ Blue Archive OST 113. Usagi Flap" src="cover/ブルーアーカイブ Blue Archive OST 113. Usagi Flap.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         ブルーアーカイブ Blue Archive OST 113. Usagi Flap
+        </span>
+        <span class="song-artist">
+         MO2
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/Unwelcome School.jpg" data-src="music/Unwelcome School.mp3">
+       <img alt="Unwelcome School" src="cover/Unwelcome School.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         Unwelcome School
+        </span>
+        <span class="song-artist">
+         ミツキヨ (Mitsukiyo)
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/ブルーアーカイブ Blue Archive OST 84. PRST Marching.jpg" data-src="music/ブルーアーカイブ Blue Archive OST 84. PRST Marching.mp3">
+       <img alt="ブルーアーカイブ Blue Archive OST 84. PRST Marching" src="cover/ブルーアーカイブ Blue Archive OST 84. PRST Marching.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         ブルーアーカイブ Blue Archive OST 84. PRST Marching
+        </span>
+        <span class="song-artist">
+         MO2
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/[Blue Archive] Main OST 'Target for love' Full ver..jpg" data-src="music/[Blue Archive] Main OST 'Target for love' Full ver..mp3">
+       <img alt="[Blue Archive] Main OST 'Target for love' Full ver." src="cover/[Blue Archive] Main OST 'Target for love' Full ver..jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         [Blue Archive] Main OST 'Target for love' Full ver.
+        </span>
+        <span class="song-artist">
+         Blue Archive
+        </span>
+       </div>
+      </li>
+      <li data-cover="cover/life force.jpg" data-src="music/life force.mp3">
+       <img alt="life force" src="cover/life force.jpg"/>
+       <div class="song-info">
+        <span class="song-name">
+         life force
+        </span>
+        <span class="song-artist">
+         ptasinski - Topic
+        </span>
+       </div>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="menu">
+   <a href="../index.html">
+    Trang chủ
+   </a>
+   <a href="../info.html">
+    Giới thiệu
+   </a>
+   <a href="https://www.youtube.com/watch?v=UIp6_0kct_U">
+    Idk
+   </a>
+  </div>
+  <script src="script.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js">
+  </script>
+ </body>
+</html>

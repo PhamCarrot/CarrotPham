@@ -1,0 +1,64 @@
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('1FTVVIPAlbra-Light.woff2') format('woff2'),
+         url('1FTVVIPAlbra-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'MyCustomFont', Arial, sans-serif;
+}
+
+@font-face {
+    font-family: "Font2";
+    src: url('custom_font.woff2') format('woff2'),
+         url('custom_font.woff') format('woff');
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        text-align: center;
+        margin-top: 80px;
+        
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .social-icons a {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
